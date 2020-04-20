@@ -19,7 +19,7 @@ parser.add_argument("-e", "--embdim", dest="emb_dim", type=int, metavar='<int>',
 parser.add_argument("-as", "--aspect-size", dest="aspect_size", type=int, metavar='<int>', default=14,
                     help="The number of aspects specified by users (default=14)")
 parser.add_argument("--emb-name",  type=str,
-                    help="The name to the word embeddings file", default="w2v_64k_unigram_100d.model")
+                    help="The name to the word embeddings file", default="w2v_embedding")
 parser.add_argument("--epochs", dest="epochs", type=int, metavar='<int>', default=15,
                     help="Number of epochs (default=15)")
 parser.add_argument("-n", "--neg-size", dest="neg_size", type=int, metavar='<int>', default=20,

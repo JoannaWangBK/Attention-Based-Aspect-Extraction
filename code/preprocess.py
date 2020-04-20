@@ -37,6 +37,8 @@ def preprocess_test(domain):
 
     for text, label in zip(f1, f2):
         label = label.strip()
+        if domain == 'speaker' and label not in ['sound', 'durability', 'design', 'price']:
+            continue            
         if domain == 'restaurant' and label not in ['Food', 'Staff', 'Ambience']:
             continue
         tokens = parseSentence(text)
@@ -67,7 +69,7 @@ def preprocess(domain):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--domain", dest="domain", type=str, metavar='<str>', default='restaurant',
+    parser.add_argument("--domain", dest="domain", type=str, metavar='<str>', default='speaker',
                         help="domain of the corpus")
     args = parser.parse_args()
 
