@@ -16,7 +16,7 @@ def create_model(args, maxlen, vocab):
     def ortho_reg(weight_matrix):
         ### orthogonal regularization for aspect embedding matrix ###
         w_n = K.l2_normalize(weight_matrix, axis=-1)
-        reg = K.sum(K.square(K.dot(w_n, K.transpose(w_n)) - K.eye(w_n.shape[0])))
+        reg = K.sum(K.square(K.dot(w_n, K.transpose(w_n)) - K.eye(w_n.get_shape().as_list()[0])))
         return args.ortho_reg * reg
 
     vocab_size = len(vocab)
@@ -34,15 +34,15 @@ def create_model(args, maxlen, vocab):
 
     ##### Construct word embedding layer #####
     word_emb = Embedding(vocab_size, args.emb_dim,
-                         mask_zero=True, name='word_emb',
-                         embeddings_constraint=MaxNorm(10))
+                         mask_zero=True, name='word_emb')
+                         #, embeddings_constraint=MaxNorm(10))
 
     ##### Compute sentence representation #####
     e_w = word_emb(sentence_input)
     y_s = Average()(e_w)
-    att_weights = Attention(name='att_weights',
-                            W_constraint=MaxNorm(10),
-                            b_constraint=MaxNorm(10))([e_w, y_s])
+    att_weights = Attention(name='att_weights')([e_w, y_s])
+                            #W_constraint=MaxNorm(10),
+                            #b_constraint=MaxNorm(10))([e_w, y_s])
     z_s = WeightedSum()([e_w, att_weights])
 
     ##### Compute representations of negative instances #####
@@ -53,7 +53,7 @@ def create_model(args, maxlen, vocab):
     p_t = Dense(args.aspect_size)(z_s)
     p_t = Activation('softmax', name='p_t')(p_t)
     r_s = WeightedAspectEmb(args.aspect_size, args.emb_dim, name='aspect_emb',
-                            W_constraint=MaxNorm(10),
+                            #W_constraint=MaxNorm(10),
                             W_regularizer=ortho_reg)(p_t)
 
     ##### Loss #####
