@@ -1,10 +1,5 @@
 # Attention-Based Aspect Extraction
-This repository is a fork of [updated code repository](https://github.com/madrugado/Attention-Based-Aspect-Extraction) which contains an updated version of the [original author's code repository](https://github.com/ruidan/Unsupervised-Aspect-Extraction). The updated code repository included the following code improvements:
-* python 3 compliant
-* Keras 2 compliant
-* Keras backend independent
-* added optional input for seed words to train using Russian language 
-* no need to specify embedding dimension with external embedding usage model
+This repository is a fork of [updated code repository](https://github.com/madrugado/Attention-Based-Aspect-Extraction) which contains an updated version of the [original author's code repository](https://github.com/ruidan/Unsupervised-Aspect-Extraction). The updated code repository fork updated the original code to run in Python 3 and Keras 2. 
 
 Our version of the code includes the following enhancements:
 * updates to the evalauation code to improve functionailty and add additional outputs to assess model performance
@@ -21,7 +16,7 @@ python word2vec.py
 respectively in code/  The preprocessed files for the speaker domain will be saved in a folder preprocessed_data/speaker
 
 ## Train
-Under code/ and type the following command for training:
+While in the folder code/ run the following command for training:
 ```bash
 python train.py \
 --emb-name ../preprocessed_data/speaker/w2v_embedding \
@@ -32,10 +27,10 @@ where *--emb*-name is the path to the pre-trained word embeddings generated in w
 After training, two output files will be saved in code/output_dir/speaker/: 1) *aspect.log* contains extracted aspects with top 100 words for each of them. 2) *model_param* contains the saved model weights
 
 ## Evaluation
-Under code/ and type the following command:
+While in the folder code/ run the following command:
 ```bash
 python evaluation.py \
---domain speaker -o output_dir  --vocab-size 11000 --aspect-size 20
+--domain speaker -o output_dir --vocab-size 11000 --aspect-size 20
 ```
 Note that you should keep the values of arguments for evaluation the same as those for training (except *--emb-name*, you don't need to specify it), as we need to first rebuild the network architecture and then load the saved model weights.
 
