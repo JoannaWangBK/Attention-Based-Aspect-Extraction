@@ -11,9 +11,9 @@ Our version of the code includes the following enhancements:
 * ability to run using Amazon review data
 
 ## Data
-You can find the pre-processed datasets and the pre-trained word embeddings in [[Download]](https://drive.google.com/open?id=1L4LRi3BWoCqJt5h45J2GIAW9eP_zjiNc). The zip file should be decompressed and put in the main folder.
+You can find the pre-processed datasets in [[Download]](https://drive.google.com/open?id=1j3qXQYe7QuWRG-pA3EzYPiGm80KRF3wB). The zip file should be decompressed and put in the main folder.
 
-You can also download the original Amazon datasets for the speaker/headphone domain in [[Download]](https://drive.google.com/open?id=1qzbTiJ2IL5ATZYNMp2DRkHvbFYsnOVAQ). For preprocessing, put the decompressed zip file in the main folder and run 
+You can also download the original Amazon datasets for the speaker and headphone domain in [[Download]](https://drive.google.com/open?id=1oegIniCVLmsm_N_pzWdoOvv5yG5At6AG). For preprocessing, put the decompressed zip file in the main folder and run 
 ```
 python preprocess.py
 python word2vec.py
