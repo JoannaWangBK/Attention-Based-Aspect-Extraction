@@ -18,7 +18,7 @@ You can also download the original Amazon datasets for the speaker and headphone
 python preprocess.py
 python word2vec.py
 ```
-respectively in code/ . The preprocessed files and trained word embeddings for the speaker domain will be saved in a folder preprocessed_data/speaker
+respectively in code/  The preprocessed files for the speaker domain will be saved in a folder preprocessed_data/speaker
 
 ## Train
 Under code/ and type the following command for training:
